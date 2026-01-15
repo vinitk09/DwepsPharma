@@ -6,36 +6,36 @@ import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-    const pathname = usePathname()
+    const pathname = usePathname() // Get the current path (e.g., "/about")
+
+    // Helper function to determine if a link is active
+    const getLinkClasses = (path) => {
+        const isActive = pathname === path;
+        return isActive 
+            ? "text-[#049fe5] border-b-2 border-[#049fe5] pb-1 font-medium transition-colors" // Active State (Blue + Underline)
+            : "text-gray-800 font-medium hover:text-[#049fe5] transition-colors";       // Inactive State
+    };
 
     const handleScrollToSection = (e, sectionId) => {
-        e.preventDefault()
-        // Close mobile menu if open
+        // Only prevent default if we are purely scrolling on the home page
+        if (pathname === '/' && sectionId) {
+            //  e.preventDefault()
+             const element = document.getElementById(sectionId)
+             if (element) {
+                 element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+             }
+        }
         setIsMobileMenuOpen(false)
-        
-        // If we're on a different page, navigate to home first
-        if (pathname !== '/') {
-            window.location.href = `/#${sectionId}`
-            return
-        }
-        
-        // Scroll to section on current page
-        const element = document.getElementById(sectionId)
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }
     }
+
     return (
-        <nav className="bg-white shadow-sm w-full font-heading">
+        <nav className="bg-white shadow-sm w-full font-heading sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
+                    
                     {/* Logo Section */}
                     <div className="shrink-0">
-                        <a 
-                            href="#home" 
-                            onClick={(e) => handleScrollToSection(e, 'home')}
-                            className="cursor-pointer"
-                        >
+                        <Link href="/" className="cursor-pointer">
                             <Image
                                 src="/dwepsl.png"
                                 alt="DWEPS Pharmaceuticals Logo"
@@ -44,47 +44,62 @@ const Navbar = () => {
                                 className="h-auto"
                                 priority
                             />
-                        </a>
+                        </Link>
                     </div>
 
-                    {/* Navigation Menu */}
+                    {/* Navigation Menu (Desktop) */}
                     <div className="hidden md:flex items-center space-x-8 flex-1 justify-center">
-                        <a 
-                            href="#home" 
-                            onClick={(e) => handleScrollToSection(e, 'home')}
-                            className="text-[#049fe5] font-medium hover:text-[#028ccc] transition-colors"
+                        
+                        <Link 
+                            href="/" 
+                            className={getLinkClasses('/') 
+                                
+                            }
                         >
                             Home
-                        </a>
-                        <a 
-                            href="#about" 
-                            onClick={(e) => handleScrollToSection(e, 'about')}
-                            className="text-gray-800 font-medium hover:text-gray-600 transition-colors"
+                        </Link>
+
+                        <Link 
+                            href="/about" 
+                            className={getLinkClasses('/about')}
                         >
                             About Us
-                        </a>
-                        <a 
-                            href="#services" 
-                            onClick={(e) => handleScrollToSection(e, 'services')}
-                            className="text-gray-800 font-medium hover:text-gray-600 transition-colors"
+                        </Link>
+
+                        <Link 
+                            href="/services" 
+                            className={getLinkClasses('/services')}
                         >
                             Services
-                        </a>
-                        <div className="relative group">
-                            <a 
-                                href="#products" 
-                                onClick={(e) => handleScrollToSection(e, 'products')}
-                                className="text-gray-800 font-medium hover:text-gray-600 transition-colors flex items-center"
+                        </Link>
+
+                        {/* Products Dropdown Wrapper */}
+                        <div className="relative group h-full flex items-center">
+                            <Link 
+                                href="/products" 
+                                className={`flex items-center ${getLinkClasses('/products')}`}
                             >
                                 Products
                                 <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    {/* <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /> */}
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                 </svg>
-                            </a>
+                            </Link>
+
+                            {/* Dropdown Menu */}
+                            <div className="absolute hidden group-hover:block left-0 top-full bg-white rounded-lg shadow-xl z-50 border border-gray-100 w-56">
+                                <Link 
+                                    href="/products" 
+                                    className="block px-4 py-2 rounded-lg text-gray-800 hover:bg-[#049fe5] hover:text-white transition-colors"
+                                >
+                                    Gynecological Services
+                                </Link>
+                                {/* You can add more dropdown items here */}
+                            </div>
                         </div>
+
                         <Link 
-                            href="/contact"
-                            className="text-gray-800 font-medium hover:text-gray-600 transition-colors"
+                            href="/contact" 
+                            className={getLinkClasses('/contact')}
                         >
                             Contact Us
                         </Link>
@@ -105,7 +120,6 @@ const Navbar = () => {
                         <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             className="text-gray-800 hover:text-gray-600 focus:outline-none"
-                            aria-label="Toggle menu"
                         >
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 {isMobileMenuOpen ? (
@@ -121,44 +135,44 @@ const Navbar = () => {
                 {/* Mobile Menu */}
                 {isMobileMenuOpen && (
                     <div className="md:hidden pb-4 space-y-3">
-                        <a 
-                            href="#home" 
-                            onClick={(e) => handleScrollToSection(e, 'home')}
-                            className="block text-purple-600 font-medium hover:text-purple-700 transition-colors py-2"
+                        <Link 
+                            href="/" 
+                            className={`block py-2 ${pathname === '/' ? 'text-[#049fe5] font-bold' : 'text-gray-800'}`}
+                            onClick={() => setIsMobileMenuOpen(false)}
                         >
                             Home
-                        </a>
-                        <a 
-                            href="#about" 
-                            onClick={(e) => handleScrollToSection(e, 'about')}
-                            className="block text-gray-800 font-medium hover:text-gray-600 transition-colors py-2"
+                        </Link>
+                        <Link 
+                            href="/about" 
+                            className={`block py-2 ${pathname === '/about' ? 'text-[#049fe5] font-bold' : 'text-gray-800'}`}
+                            onClick={() => setIsMobileMenuOpen(false)}
                         >
                             About Us
-                        </a>
-                        <a 
-                            href="#services" 
-                            onClick={(e) => handleScrollToSection(e, 'services')}
-                            className="block text-gray-800 font-medium hover:text-gray-600 transition-colors py-2"
+                        </Link>
+                        <Link 
+                            href="/services" 
+                            className={`block py-2 ${pathname === '/services' ? 'text-[#049fe5] font-bold' : 'text-gray-800'}`}
+                            onClick={() => setIsMobileMenuOpen(false)}
                         >
                             Services
-                        </a>
-                        <a 
-                            href="#products" 
-                            onClick={(e) => handleScrollToSection(e, 'products')}
-                            className="block text-gray-800 font-medium hover:text-gray-600 transition-colors py-2"
+                        </Link>
+                        <Link 
+                            href="/products" 
+                            className={`block py-2 ${pathname === '/products' ? 'text-[#049fe5] font-bold' : 'text-gray-800'}`}
+                            onClick={() => setIsMobileMenuOpen(false)}
                         >
                             Products
-                        </a>
+                        </Link>
                         <Link 
-                            href="/contact"
-                            className="block text-gray-800 font-medium hover:text-gray-600 transition-colors py-2"
+                            href="/contact" 
+                            className={`block py-2 ${pathname === '/contact' ? 'text-[#049fe5] font-bold' : 'text-gray-800'}`}
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             Contact Us
                         </Link>
                         <a
                             href="tel:+917209121333"
-                            className="block bg-cyan-600 hover:bg-cyan-700 text-white font-medium px-6 py-2.5 rounded-lg transition-colors text-center"
+                            className="block bg-[#049fe5] text-white font-medium px-6 py-2.5 rounded-lg text-center mt-4"
                         >
                             Call Us: +91 72091 21333
                         </a>

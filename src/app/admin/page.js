@@ -18,7 +18,7 @@ const Page = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [activeTab, setActiveTab] = useState('dashboard');
   return (
-    <div className="flex h-screen bg-gray-50 overflow-hidden">
+    <div className="flex h-screen bg-gray-50 overflow-hidden font-heading">
       
       {/* ================= Sidebar ================= */}
       <aside 
@@ -28,9 +28,9 @@ const Page = () => {
       >
         {/* Logo Area */}
         <div className="h-16 flex items-center justify-center border-b border-gray-100">
-          <div className="font-bold text-2xl text-blue-600">
+          {/* <div className="font-bold text-2xl text-blue-600">
             {isSidebarOpen ? 'PharmaDash' : 'PD'}
-          </div>
+          </div> */}
         </div>
 
         {/* Navigation Links */}
@@ -60,15 +60,15 @@ const Page = () => {
             >
               <Menu size={20} />
             </button>
-            <h2 className="text-xl font-semibold text-gray-800">Dashboard Overview</h2>
+            {/* <h2 className="text-xl font-semibold text-gray-800">Dashboard Overview</h2> */}
           </div>
           
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2 hover:bg-gray-50 p-2 rounded-full cursor-pointer transition">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-green-600">
+                {/* <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-green-600">
                     <User size={18} />
-                </div>
-                <span className="text-sm font-medium text-gray-700 hidden sm:block">Admin Profile</span>
+                </div> */}
+                {/* <span className="text-sm font-medium text-gray-700 hidden sm:block">Admin Profile</span> */}
             </div>
           </div>
         </header>

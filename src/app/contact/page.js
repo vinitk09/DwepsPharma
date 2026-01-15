@@ -61,7 +61,61 @@ const ContactPage = () => {
 
     return (
         <>
-            <Navbar />
+              <section className="relative w-full overflow-hidden">
+    
+    {/* 1. BACKGROUND CONTAINER (Order doesn't strictly matter if we use z-index, but putting it first is cleaner) */}
+    <div className="absolute inset-0 bg-gradient-to-b from-[#e3f2fd] via-[#bbdefb] to-[#90caf9] z-0">
+        
+        {/* Hexagonal grid pattern */}
+        <div
+            className="absolute inset-0 opacity-20"
+            style={{
+                backgroundImage: `
+                    linear-gradient(30deg, rgba(4, 159, 229, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(4, 159, 229, 0.1) 87.5%, rgba(4, 159, 229, 0.1)),
+                    linear-gradient(150deg, rgba(4, 159, 229, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(4, 159, 229, 0.1) 87.5%, rgba(4, 159, 229, 0.1)),
+                    linear-gradient(30deg, rgba(4, 159, 229, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(4, 159, 229, 0.1) 87.5%, rgba(4, 159, 229, 0.1)),
+                    linear-gradient(150deg, rgba(4, 159, 229, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(4, 159, 229, 0.1) 87.5%, rgba(4, 159, 229, 0.1))
+                `,
+                backgroundSize: '80px 140px',
+                backgroundPosition: '0 0, 0 0, 40px 70px, 40px 70px'
+            }}
+        />
+
+        {/* Scattered dots */}
+        <div className="absolute inset-0">
+            {[...Array(20)].map((_, i) => (
+                <div
+                    key={i}
+                    className="absolute rounded-full bg-[#049fe5] opacity-30"
+                    style={{
+                        width: `${Math.random() * 8 + 4}px`,
+                        height: `${Math.random() * 8 + 4}px`,
+                        left: `${Math.random() * 100}%`,
+                        top: `${Math.random() * 100}%`,
+                    }}
+                />
+            ))}
+        </div>
+    </div>
+
+    {/* 2. TEXT CONTENT (Added 'relative' and 'z-10') */}
+    <div className='relative z-10 font-heading flex flex-col items-center justify-center px-4 py-12 lg:py-20 md:py-16 gap-4 text-center'>
+        <h2 className='text-2xl md:text-3xl font-medium text-[#1a237e]'>
+            Contact
+        </h2>
+        
+        {/* Breadcrumb style */}
+        <p className="text-sm font-medium text-[#049fe5]">
+            Home / Contact 
+        </p>
+
+      
+    </div>
+
+        </section>
+
+
+
             <div className="min-h-screen bg-white pt-28 pb-24">
                 <div className="max-w-6xl mx-auto px-8 sm:px-10 lg:px-16">
                     {/* Main Heading */}
@@ -324,7 +378,7 @@ const ContactPage = () => {
 
 
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </>
     )
 }

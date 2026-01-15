@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono,Montserrat } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 
 
@@ -30,7 +32,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} antialiased`}
       >
+        <Navbar/>
         {children}
+        <Footer/>
       </body>
     </html>
   );

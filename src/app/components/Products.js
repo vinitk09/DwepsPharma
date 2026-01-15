@@ -92,6 +92,8 @@ const Products = () => {
     }
 
     return (
+        <>
+      
         <section id="products" className="w-full py-16 md:py-10 bg-white relative overflow-hidden font-heading">
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
@@ -158,10 +160,10 @@ const Products = () => {
 
                             {/* Product Info */}
                             <div className="p-6 space-y-3">
-                                <h3 className="text-2xl md:text-3xl font-bold text-gray-800 group-hover:text-[#049fe5] transition-colors duration-300">
+                                <h3 className="text-2xl md:text-2xl font-bold text-gray-800 group-hover:text-[#049fe5] transition-colors duration-300">
                                     {product.name}
                                 </h3>
-                                <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                                <p className="text-sm md:text-md text-gray-600 leading-relaxed">
                                     {product.description}
                                 </p>
                             </div>
@@ -170,6 +172,7 @@ const Products = () => {
                 </div>
             </div>
         </section>
+        </>
     )
 }
 

@@ -8,19 +8,23 @@ import Blogs from './components/Blogs'
 import WhyChooseUs from './components/WhyChooseUs'
 import Testimonials from './components/Testimonials'
 import Footer from './components/Footer'
+import Numbers from './components/Numbers'
+import WaterEffect from './components/WaterEffect'
 
 const page = () => {
   return (
     <>
-      <Navbar />
+      
       <HeroSection />
       <About />
       <Blogs />
       <Products />
       <Strengths />
       <WhyChooseUs />
+      <Numbers/>
+      <WaterEffect/>
       <Testimonials />
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }
