@@ -22,7 +22,7 @@ const page = () => {
       <Strengths />
       <WhyChooseUs />
       <Numbers/>
-      <WaterEffect/>
+      {/* <WaterEffect/> */}
       <Testimonials />
       {/* <Footer /> */}
     </>

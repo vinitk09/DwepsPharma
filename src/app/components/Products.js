@@ -146,7 +146,7 @@ const Products = () => {
                                 <img
                                     src={product.image}
                                     alt={product.name}
-                                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-125 transition-transform duration-500"
                                     onError={(e) => {
                                         // Fallback to a placeholder if image doesn't exist
                                         e.target.style.display = 'none'

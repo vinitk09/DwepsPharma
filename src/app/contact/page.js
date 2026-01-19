@@ -112,7 +112,7 @@ const ContactPage = () => {
       
     </div>
 
-        </section>
+              </section>
 
 
 
