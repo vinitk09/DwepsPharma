@@ -94,67 +94,62 @@ With a growing portfolio and expanding footprint, DWEPS Pharmaceutical Pvt. Ltd.
                       </div>
 
                       {/* Card Design */}
-                      <div className='col-span-1 lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 mt-8'>
-                        {/* Card 1 - Our Mission */}
-                        <div className='group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2'>
-                            {/* Gradient Background */}
-                            <div className='absolute inset-0 bg-gradient-to-br from-[#049fe5] via-[#0288d1] to-[#01579b] opacity-90 group-hover:opacity-100 transition-opacity duration-500'></div>
-                            
-                            {/* Animated Circle Decoration */}
-                            <div className='absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full group-hover:scale-150 transition-transform duration-700'></div>
-                            <div className='absolute -bottom-10 -left-10 w-40 h-40 bg-white/10 rounded-full group-hover:scale-150 transition-transform duration-700'></div>
-                            
-                            {/* Content */}
-                            <div className='relative z-10 p-8 flex flex-col gap-4'>
-                                {/* Icon */}
-                                <div className='w-16 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-500'>
-                                    <svg className='w-10 h-10 text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' />
-                                    </svg>
+                      <div className='col-span-1 lg:col-span-2 flex flex-col gap-12 mt-8'>
+                        {/* Card 1 - Our Mission (Image Left, Text Right) */}
+                        <div className='group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 bg-white'>
+                            <div className='grid grid-cols-1 md:grid-cols-2 gap-0'>
+                                {/* Image Section */}
+                                <div className='relative h-64 md:h-auto overflow-hidden'>
+                                    <Image
+                                        src="/aboutOurMission.jpg"
+                                        alt="Our Mission"
+                                        fill
+                                        className="object-contain group-hover:scale-110 transition-transform duration-500"
+                                    />
                                 </div>
                                 
-                                {/* Title */}
-                                <h2 className='text-3xl font-bold text-white'>Our Mission</h2>
-                                
-                                {/* Divider */}
-                                <div className='w-16 h-1 bg-white/40 group-hover:w-24 transition-all duration-500'></div>
-                                
-                                {/* Description */}
-                                <p className='text-white/90 text-base leading-relaxed'>
-                                    To provide innovative, effective, and affordable medical solutions that enhance the quality of life.
-                                </p>
+                                {/* Text Section */}
+                                <div className='bg-white p-8 md:p-10 flex flex-col justify-center'>
+                                    {/* Title */}
+                                    <h2 className='text-2xl md:text-2xl font-bold text-[#049fe5] mb-4'>Our Mission</h2>
+                                    
+                                    {/* Divider */}
+                                    <div className='w-16 h-1 bg-[#049fe5]/40 group-hover:w-24 transition-all duration-500 mb-6'></div>
+                                    
+                                    {/* Description */}
+                                    <p className='text-gray-700 text-base md:text-base leading-relaxed'>
+                                        To provide innovative, effective, and affordable medical solutions that enhance the quality of life. We are committed to delivering high-quality pharmaceutical products that meet international standards while remaining accessible to all.
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
-                        {/* Card 2 - Our Vision */}
-                        <div className='group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2'>
-                            {/* Gradient Background */}
-                            <div className='absolute inset-0 bg-gradient-to-br from-[#1a237e] via-[#283593] to-[#3949ab] opacity-90 group-hover:opacity-100 transition-opacity duration-500'></div>
-                            
-                            {/* Animated Circle Decoration */}
-                            <div className='absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full group-hover:scale-150 transition-transform duration-700'></div>
-                            <div className='absolute -bottom-10 -left-10 w-40 h-40 bg-white/10 rounded-full group-hover:scale-150 transition-transform duration-700'></div>
-                            
-                            {/* Content */}
-                            <div className='relative z-10 p-8 flex flex-col gap-4'>
-                                {/* Icon */}
-                                <div className='w-16 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-500'>
-                                    <svg className='w-10 h-10 text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 12a3 3 0 11-6 0 3 3 0 016 0z' />
-                                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z' />
-                                    </svg>
+                        {/* Card 2 - Our Vision (Text Left, Image Right) */}
+                        <div className='group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 bg-white'>
+                            <div className='grid grid-cols-1 md:grid-cols-2 gap-0'>
+                                {/* Text Section */}
+                                <div className='bg-white p-8 md:p-10 flex flex-col justify-center order-2 md:order-1'>
+                                    {/* Title */}
+                                    <h2 className='text-2xl md:text-2xl font-bold text-[#1a237e] mb-4'>Our Vision</h2>
+                                    
+                                    {/* Divider */}
+                                    <div className='w-16 h-1 bg-[#1a237e]/40 group-hover:w-24 transition-all duration-500 mb-6'></div>
+                                    
+                                    {/* Description */}
+                                    <p className='text-gray-700 text-base md:text-base leading-relaxed'>
+                                        To be recognized as a trusted name in the Indian pharmaceutical industry for excellence in women's health, dermatology, and general medicine. We aspire to become a leading healthcare provider known for quality and innovation.
+                                    </p>
                                 </div>
                                 
-                                {/* Title */}
-                                <h2 className='text-3xl font-bold text-white'>Our Vision</h2>
-                                
-                                {/* Divider */}
-                                <div className='w-16 h-1 bg-white/40 group-hover:w-24 transition-all duration-500'></div>
-                                
-                                {/* Description */}
-                                <p className='text-white/90 text-base leading-relaxed'>
-                                    To be recognized as a trusted name in the Indian pharmaceutical industry for excellence in women's health, dermatology, and general medicine.
-                                </p>
+                                {/* Image Section */}
+                                <div className='relative h-64 md:h-auto overflow-hidden order-1 md:order-2'>
+                                    <Image
+                                        src="/aboutOurVision.avif"
+                                        alt="Our Vision"
+                                        fill
+                                        className="object-contain group-hover:scale-110 transition-transform duration-500"
+                                    />
+                                </div>
                             </div>
                         </div>
                       </div>

@@ -1,57 +1,37 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
+import Image from 'next/image'
 
 const page = () => {
-   const strengths = [
+  const [expandedCard, setExpandedCard] = useState(null)
+
+  const strengths = [
     {
-      icon: (
-        <svg className="w-16 h-16 md:w-20 md:h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M4 20h16M4 17h16M8 17V8M8 8l4-3M12 5h4M12 5l4 3M16 8v9M4 17v3M20 17v3" />
-          <rect x="3" y="17" width="2" height="3" rx="0.5" />
-          <rect x="19" y="17" width="2" height="3" rx="0.5" />
-          <rect x="6" y="10" width="4" height="2" rx="0.5" />
-        </svg>
-      ),
-      title: "Manufacturing",
-      description: "Our manufacture is driven by a unique clinical and research approach that emphasizes scientific advancements.",
-      colorClass: "group-hover:bg-[#049fe5]" // Color to fill on hover
-    },
-    {
-      icon: (
-        <svg className="w-16 h-16 md:w-20 md:h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2M12 19v2M3 12h2M19 12h2M5.64 5.64l1.41 1.41M16.95 16.95l1.41 1.41M5.64 18.36l1.41-1.41M16.95 7.05l1.41-1.41" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6a6 6 0 016 6c0 2.5-2 4.5-4.5 4.5H10.5C8 16.5 6 14.5 6 12a6 6 0 016-6z" />
-          <circle cx="12" cy="12" r="1.5" />
-        </svg>
-      ),
-      title: "Innovations",
-      description: "Healthcare innovation is an unavoidable necessity. Better healthcare is becoming increasingly necessary.",
+      image: "/DwepsServiceImage.png",
+      title: "Third Party Manufacturing",
+      description: "At DWEPS Pharmaceutical Pvt. Ltd., we provide end-to-end third-party manufacturing solutions for pharmaceutical companies seeking to expand their product range without investing in manufacturing infrastructure. Our state-of-the-art facilities and stringent quality control systems ensure the production of high-efficacy formulations that meet both domestic and international regulatory standards.",
+      moreText: "From product formulation and development to packaging and timely delivery, we handle the entire process with professionalism and precision. We offer flexible batch sizes, competitive pricing, and full transparency, making us a trusted partner for startups, growing brands, and established pharmaceutical companies alike. Whether you are looking to launch new products under your brand name or scale up existing ones, our third-party manufacturing services provide the support and infrastructure you need to succeed in a competitive market.",
       colorClass: "group-hover:bg-[#049fe5]"
     },
     {
-      icon: (
-        <svg className="w-16 h-16 md:w-20 md:h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M3 6h18M3 6v15M21 6v15M5 21V6M19 21V6" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M6 9h2M6 12h2M6 15h2M6 18h2M10 9h2M10 12h2M10 15h2M10 18h2M14 9h2M14 12h2M14 15h2M14 18h2" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3 6l9-3 9 3" />
-        </svg>
-      ),
-      title: "Infrastructure",
-      description: "Modern formulation manufacturing facility with effective storage spaces and adherence to international norms.",
+      image: "/DwepsServiceImage2.png",
+      title: "Franchisee",
+      description: "DWEPS Pharmaceutical Pvt. Ltd. invites dynamic and growth-oriented individuals and businesses to become part of our expanding pharmaceutical network through our franchisee program. We offer a lucrative opportunity to operate under the trusted DWEPS brand, providing a wide range of high-quality pharmaceutical products across multiple therapeutic categories.",
+      moreText: "As a franchisee, you benefit from exclusive marketing rights, competitive pricing, promotional support, timely product delivery, and consistent quality assurance. Our dedicated support team ensures smooth onboarding, operational guidance, and ongoing assistance to help you succeed in your territory. Join hands with DWEPS and become a part of our mission to deliver accessible and effective healthcare solutions across India. Let’s grow together in the booming pharmaceutical sector.",
       colorClass: "group-hover:bg-[#049fe5]"
     },
     {
-      icon: (
-        <svg className="w-16 h-16 md:w-20 md:h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4" strokeWidth="2" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 2c1.5 0 2.9.4 4.1 1.1M12 22c-1.5 0-2.9-.4-4.1-1.1M2 12c0-1.5.4-2.9 1.1-4.1M22 12c0 1.5-.4 2.9-1.1 4.1" />
-        </svg>
-      ),
-      title: "Quality Control",
-      description: "We place a strong emphasis on maintaining the ethics of research and development to support efficient operations.",
+      image: "/DwepsServiceImage3.png",
+      title: "Distributor",
+      description: "DWEPS Pharmaceutical Pvt. Ltd. operates a robust and efficient distribution network that ensures timely and seamless delivery of our pharmaceutical products across India. Our well-structured logistics system is designed to meet the diverse needs of hospitals, clinics, pharmacies, and medical institutions, even in remote and rural areas.",
+      moreText: "We partner with reliable distributors and stockists, enabling swift product availability and maintaining consistent supply chains. Every shipment is managed with precision, adhering to strict quality and safety standards to ensure product integrity from our facilities to the end user. Our commitment to efficient distribution is a key pillar of our promise to make high-quality, affordable healthcare accessible to all.",
       colorClass: "group-hover:bg-[#049fe5]"
     }
   ]
+
+  const toggleExpand = (index) => {
+    setExpandedCard(expandedCard === index ? null : index)
+  }
 
   return (
     <>
@@ -108,36 +88,71 @@ const page = () => {
 
     </section>
     <section id="services" className="w-full py-12 md:py-16 lg:py-20 bg-gray-50 font-heading">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 ">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-2 ">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {strengths.map((strength, index) => (
             <div
               key={index}
-              className="group relative h-full overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              className={`group relative overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl flex flex-col ${
+                expandedCard === index ? 'md:col-span-3' : ''
+              }`}
             >
-              {/* 1. The Animated Background Layer */}
-              <div 
-                className={`absolute inset-0 translate-y-full transition-transform duration-500 ease-out ${strength.colorClass} group-hover:translate-y-0`}
-              />
-
-              {/* 2. The Content (Must be relative z-10 to sit on top of the animation) */}
-              <div className="relative z-10 p-8 md:p-10 flex flex-col items-center text-center">
+              {/* Content */}
+              <div className="relative z-10 py-6 px-6 flex flex-col items-center flex-grow">
                 
-                {/* Icon: Changes color on hover */}
-                <div className={`mb-6 md:mb-8 transition-colors duration-300 text-[#049fe5] group-hover:text-white`}>
-                  {strength.icon}
+                {/* Image: Larger size with hover effect */}
+                <div className={`mb-6 w-72 h-32 md:w-72 md:h-40 relative rounded-sm overflow-hidden transition-transform duration-300 group-hover:scale-110`}>
+                  <Image
+                    src={strength.image}
+                    alt={strength.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
 
-                {/* Title: Changes color on hover */}
-                <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6 text-gray-800 transition-colors duration-300 group-hover:text-white font-poppins font-poppins">
+                {/* Title */}
+                <h3 className="text-xl md:text-xl lg:text-xl font-bold mb-4 text-gray-800 font-poppins">
                   {strength.title}
                 </h3>
 
-                {/* Description: Changes color on hover */}
-                <p className="text-sm md:text-base lg:text-lg leading-relaxed text-gray-600 transition-colors duration-300 group-hover:text-white group-hover:opacity-90 font-poppins">
+                {/* Description */}
+                <p className="text-sm md:text-sm lg:text-sm leading-relaxed text-gray-600 font-poppins mb-auto">
                   {strength.description}
                 </p>
+
+                {/* Expanded Content */}
+                <div
+                  className={`overflow-hidden transition-all duration-500 ${
+                    expandedCard === index ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <p className="text-sm md:text-sm lg:text-sm leading-relaxed text-gray-600 font-poppins">
+                    {strength.moreText}
+                  </p>
+                </div>
+
+                {/* Read More Button */}
+                <button
+                  onClick={() => toggleExpand(index)}
+                  className="mt-6 px-4 py-2 bg-[#049fe5] text-white hover:bg-[#0288d1] font-semibold text-base rounded-md transition-colors duration-200 flex items-center gap-2 shadow-md hover:shadow-lg"
+                >
+                  {expandedCard === index ? (
+                    <>
+                      Read Less
+                      <svg className="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      Read More
+                      <svg className="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </>
+                  )}
+                </button>
               </div>
             </div>
           ))}
