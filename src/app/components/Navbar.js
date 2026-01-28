@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -28,10 +28,31 @@ const Navbar = () => {
         setIsMobileMenuOpen(false)
     }
 
+    const [inputValue,setInputValue] = useState("");
+    const [index, setIndex] = useState(0);
+    
+        const fullText = "Search for Products, Services and more..."
+
+        useEffect(()=>{
+            if(index < fullText.length){
+                const timeout = setTimeout(()=>{
+                    setInputValue((prev) => prev + fullText[index])
+                    setIndex((prev) => prev + 1)
+                }, 100)
+                return () => clearTimeout(timeout)
+            }
+            else{
+               const timeout = setTimeout(()=>{
+                 setInputValue('')
+                setIndex(0)
+               },100)
+            }
+        },[inputValue,fullText])
+    
     return (
         <nav className="bg-white shadow-sm w-full font-heading sticky top-0 z-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
+                <div className="flex items-center justify-between gap-4 ">
                     
                     {/* Logo Section */}
                     <div className="shrink-0">
@@ -39,16 +60,23 @@ const Navbar = () => {
                             <Image
                                 src="/dwepsl.png"
                                 alt="DWEPS Pharmaceuticals Logo"
-                                width={70}
-                                height={70}
+                                width={100}
+                                height={100}
                                 className="h-auto"
                                 priority
                             />
                         </Link>
                     </div>
+                    <div className='flex border border-gray-800  rounded-sm px-2 py-1 flex-1 max-w-md bg-gray-100 hidden md:flex'>
+                <input type='search'  placeholder={inputValue}
+                className='px-2 py-1 w-full border-none outline-none focus:ring-0 '/>
+                <div className='flex items-center'>
+                    <Image src='/Search2.webp' alt='search' width={20} height={20} className='cursor-pointer'/>
+                </div>
+            </div>
 
                     {/* Navigation Menu (Desktop) */}
-                    <div className="hidden md:flex items-center space-x-8 flex-1 justify-center">
+                    <div className="hidden md:flex items-center space-x-8  justify-center ">
                         
                         <Link 
                             href="/" 
@@ -106,13 +134,20 @@ const Navbar = () => {
                     </div>
 
                     {/* Call to Action Button - Desktop */}
-                    <div className="hidden md:block shrink-0">
+                    <div className="hidden md:flex  flex items-center gap-1 px-2 rounded-sm justify-center bg-[#049fe5] hover:bg-[#028ccc]">
+                         <a>
+                                <Image src='/phone-call.png' alt='search' width={20} height={20} className='cursor-pointer'/>
+
+                            </a>
                         <a
                             href="tel:+917209121333"
-                            className="bg-[#049fe5] hover:bg-[#028ccc] text-white font-medium px-4 py-2 rounded-lg transition-colors whitespace-nowrap"
+                            className=" text-white font-medium  py-2 rounded-lg transition-colors whitespace-nowrap"
                         >
-                            Call Us: +91 72091 21333
+                            
+                           
+                                +91 72091 21333
                         </a>
+                        
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -135,6 +170,13 @@ const Navbar = () => {
                 {/* Mobile Menu */}
                 {isMobileMenuOpen && (
                     <div className="md:hidden pb-4 space-y-3">
+                           <div className='flex border border-gray-800  rounded-sm px-2 py-1 flex-1 max-w-md bg-gray-100'>
+                <input type='search'  placeholder={inputValue}
+                className='px-2 py-1 w-full border-none outline-none focus:ring-0 '/>
+                <div className='flex items-center'>
+                    <Image src='/Search2.webp' alt='search' width={20} height={20} className='cursor-pointer'/>
+                </div>
+            </div>
                         <Link 
                             href="/" 
                             className={`block py-2 ${pathname === '/' ? 'text-[#049fe5] font-bold' : 'text-gray-800'}`}
