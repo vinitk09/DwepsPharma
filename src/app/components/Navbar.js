@@ -212,18 +212,17 @@ const Navbar = () => {
                         >
                             Contact Us
                         </Link>
-                          <div className="hidden md:flex  flex items-center gap-1 px-2 rounded-sm justify-center bg-[#049fe5] hover:bg-[#028ccc]">
-                            <a>
+                        <div className=" flex items-center justify-center gap-2 px-2 rounded-sm justify-center bg-[#049fe5] hover:bg-[#028ccc]">
+                        <a>
                                 <Image src='/phone-call.png' alt='search' width={20} height={20} className='cursor-pointer'/>
-
-                            </a>
+                        </a>
                         <a
                             href="tel:+917209121333"
-                            className="block bg-[#049fe5] text-white font-medium px-6 py-2.5 rounded-lg text-center mt-4"
+                            className="bg-[#049fe5] text-white font-medium  py-2.5 rounded-lg text-center"
                         >
-                             +91 72091 21333
+                            +91 72091 21333
                         </a>
-                          </div>
+                        </div>
                     </div>
                 )}
             </div>
